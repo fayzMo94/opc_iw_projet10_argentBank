@@ -1,0 +1,22 @@
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.errorPage h1 {
+  font-size: 10rem;
+  margin-bottom: 1rem;
+  color: #005838;
+}
+
+.errorPage p {
+  font-size: 5rem;
+  color: #00BD7C;
+}
+
+.errPg__link {
+  margin-top: 2rem;
+}
