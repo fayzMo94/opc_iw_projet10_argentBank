@@ -59,3 +59,9 @@
 .sign-in-button:hover {
   background-color: #00a86b;
 }
+
+.error-msg {
+  color: red;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
