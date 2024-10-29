@@ -34,19 +34,22 @@ export const userApi = createApi({
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }),
     }),
 
-    // editUserName: builder.mutation({
-    //   query: ({ userName }) => ({
-    //     url: "/user/profile",
-    //     method: "PUT",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ userName }),
-    //   }),
-    // }),
+    editUserName: builder.mutation({
+      query: ({ token, userName }) => ({
+        url: "/user/profile",
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ userName }),
+      }),
+    }),
   }),
 });
 
@@ -54,5 +57,5 @@ export const {
   useLoginUserMutation,
   useSignupUserMutation,
   useEditUserNameMutation,
-  useGetUserDataQuery
+  useGetUserDataQuery,
 } = userApi;
