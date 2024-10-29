@@ -17,8 +17,7 @@ export const LoginForm = () => {
 
   const [errMsge, setErrMsge] = useState("");
 
-  const [loginUser, { data, isLoading, isSuccess, isError }] =
-    useLoginUserMutation();
+  const [loginUser, { data, isSuccess, isError }] = useLoginUserMutation();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -59,15 +58,14 @@ export const LoginForm = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      const token = data.token;
+      const token = data.body.token;
       dispatch(login(token));
       sessionStorage.setItem("token", token);
       if (rememberMe) {
         localStorage.setItem("token", token);
       }
       navigate("/user");
-    }
-    else if (isError) {
+    } else if (isError) {
       setErrMsge("Email ou mot de passe incorrect");
     }
   }, [isSuccess, isError]);

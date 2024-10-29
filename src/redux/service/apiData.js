@@ -28,6 +28,17 @@ export const userApi = createApi({
       }),
     }),
 
+    getUserData: builder.query({
+      query: (token) => ({
+        url: "/user/profile",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      }),
+    }),
+
     // editUserName: builder.mutation({
     //   query: ({ userName }) => ({
     //     url: "/user/profile",
@@ -43,4 +54,5 @@ export const {
   useLoginUserMutation,
   useSignupUserMutation,
   useEditUserNameMutation,
+  useGetUserDataQuery
 } = userApi;
