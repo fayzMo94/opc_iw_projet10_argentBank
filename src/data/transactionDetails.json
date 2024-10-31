@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "transactionType": "Electronic",
+    "category": "Food",
+    "note": "lorem ipsum1"
+  },
+  {
+    "id": 2,
+    "transactionType": "Electronic",
+    "category": "Food",
+    "note": "lorem ipsum2"
+  },
+  {
+    "id": 3,
+    "transactionType": "Electronic",
+    "category": "Food",
+    "note": "lorem ipsum3"
+  },
+  {
+    "id": 4,
+    "transactionType": "Electronic",
+    "category": "Food",
+    "note": "lorem ipsum4"
+  },
+  {
+    "id": 5,
+    "transactionType": "Electronic",
+    "category": "Food",
+    "note": "lorem ipsum5"
+  }
+]

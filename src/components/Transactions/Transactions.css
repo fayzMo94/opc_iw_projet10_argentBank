@@ -1,0 +1,18 @@
+.transactions_container {
+  width: 100%;
+  border-collapse: collapse;
+  
+}
+
+.transactions_container thead {
+  background-color: white;
+  color: black;
+}
+
+.transactions_container thead tr th {
+  padding: 10px;
+}
+
+.test {
+  width: 100%;
+}
