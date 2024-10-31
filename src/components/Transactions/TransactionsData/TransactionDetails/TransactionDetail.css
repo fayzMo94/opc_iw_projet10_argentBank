@@ -1,0 +1,49 @@
+.transactionDetails_container {
+  max-width: 100%;
+  background-color: #00bc77;
+  color: white;
+}
+
+.tdc--hide {
+  padding: 0 5px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s, padding 0.5s;
+}
+.tdc--show {
+  max-height: 9999;
+  padding: 10px 5px;
+  transition: max-height 0.5s, padding 0.5s;
+}
+
+.transactionDetails_container td {
+  margin-top: 5px;
+}
+
+
+
+.icon-text-container {
+  display: flex;
+  align-items: center;
+  gap: 7px; 
+}
+
+.edit-icon {
+  cursor: pointer;
+}
+
+.selectCat_form {
+  background-color: #016440;
+  border-radius: 5px;
+  padding: 10px;
+  align-self: flex-start;
+}
+
+.buttons button {
+  background-color: #00bc77;
+  border: none;
+  border-radius: 3px;
+  padding: 2px 5px;
+  color: white;
+  font-weight: bold;
+}
