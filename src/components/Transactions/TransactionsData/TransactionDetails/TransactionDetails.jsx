@@ -32,7 +32,7 @@ const TransactionDetails = ({ collapse, trans }) => {
               onClick={() => setEditCat(!editCat)}
               className="edit-icon"
             />
-            {/* {editCat && (
+            {editCat && (
               <form className="selectCat_form">
                 <label htmlFor="category">Select a category</label>
                 <select id="category" name="category">
@@ -52,7 +52,7 @@ const TransactionDetails = ({ collapse, trans }) => {
                   </button>
                 </div>
               </form>
-            )} */}
+            )}
           </td>
         </tr>
         <tr>
