@@ -101,8 +101,188 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-          #! AJOUT DES ENDPOINTS:
-
+          # adding endpoints:
+  /user/accounts:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions & Accounts Module
+      summary: User accounts API
+      description: API for fetching user's accounts
+      responses:
+        "200":
+          description: User accounts retrieved successfully
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/AccountsResponse"
+        "400":
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
+  /user/accounts/{accountId}/transactions:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions & Accounts Module
+      summary: Account transactions
+      description: API for fetching an account's list of transactions
+      parameters:
+        - in: path
+          name: accountId
+          description: account's ID
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Transactions retrieved successfully
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/TransactionsResponse"
+        "400":
+          description: Invalid Fields
+        "500":
+          description: Internal Server Error
+  /user/accounts/{accountId}/transactions/{transactionId}/category:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions & Accounts Module
+      summary: Update category of a transaction
+      description: API for updating the category of a transaction
+      parameters:
+        - in: path
+          name: accountId
+          description: account's ID
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          description: transaction id
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Updated transaction category
+          required: true
+          schema:
+            $ref: "#/definitions/TransactionCategory"
+      responses:
+        "200":
+          description: Transaction's category updated successfully
+          schema:
+            $ref: "#/definitions/TransactionCategory"
+        "400":
+          description: Invalid fields
+        "500":
+          description: Internal Servor Error
+  /user/accounts/{accountId}/transactions/{transactionId}/note:
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions & Accounts Module
+      summary: Add note to transaction
+      description: API for adding a note to a transaction
+      parameters:
+        - in: path
+          name: accountId
+          description: account's ID
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          description: transaction id
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Transaction note
+          required: true
+          schema:
+            $ref: "#/definitions/TransactionNote"
+      responses:
+        "200":
+          description: Note modified successfully
+          schema:
+            $ref: "#/definitions/TransactionNoteResponse"
+        "400":
+          description: Invalid fields
+        "500":
+          description: Internal Server Error
+  /user/accounts/{accountId}/transactions/{transactionId}/note/{noteId}:
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - Transactions & Accounts Module
+      summary: Update transaction note
+      description: API for updating a transaction note
+      parameters:
+        - in: path
+          name: accountId
+          description: account's ID
+          required: true
+          type: string
+        - in: path
+          name: transactionId
+          description: transaction id
+          required: true
+          type: string
+        - in: path
+          name: noteId
+          description: note id
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: update transaction note
+          required: true
+          schema:
+            $ref: "#/definitions/TransactionNote"
+      responses:
+        "200":
+          description: Note updated successfully
+          schema:
+            $ref: "#/definitions/TransactionNoteResponse"
+        "400":
+          description: Invalid fields
+        "500":
+          description: Internal Server Error
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - Accounts and Transactions Module
+      summary: Delete transaction note
+      description: API for deleting a transaction note
+      parameters:
+        - in: path
+          name: accountId
+          description: account's ID
+          required: true
+          type: string
+        - in: path
+          name: transactionID
+          description: transaction id
+          required: true
+          type: string
+        - in: path
+          name: noteID
+          description: note id
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Note deleted successfully
+        "400":
+          description: Could not delete note
+        "500":
+          description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -157,4 +337,67 @@ definitions:
     type: object
     properties:
       userName:
+        type: string
+  AccountsResponse:
+    type: object
+    properties:
+      accountId:
+        type: string
+        description: account ID
+      accountName:
+        type: string
+        description: account name
+      accountCurrency:
+        type: string
+        description: account currency
+      accountBalance:
+        type: number
+        description: account current balance
+        format: double
+  TransactionsResponse:
+    type: object
+    properties:
+      transactionId:
+        type: string
+        description: transaction ID
+      date:
+        type: string
+        format: date-time
+        description: transaction date
+      description:
+        type: string
+        description: transaction description
+      amount:
+        type: number
+        description: transaction amount
+        format: double
+      balance:
+        type: number
+        description: balance
+        format: double
+      transactionType:
+        type: string
+        description: transaction type
+      category:
+        type: string
+        description: transaction category
+      note:
+        type: string
+        description: transaction note
+  TransactionCategory:
+    type: object
+    properties:
+      category:
+        type: string
+  TransactionNote:
+    type: object
+    properties:
+      note:
+        type: string
+  TransactionNoteResponse:
+    type: object
+    properties:
+      note:
+        type: string
+      noteID:
         type: string
